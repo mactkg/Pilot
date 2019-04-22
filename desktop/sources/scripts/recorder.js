@@ -33,6 +33,8 @@ function Recorder (pilot) {
   }
 
   this.start = function () {
+    if(this.isRecording) { return }
+
     console.log('Recorder', 'Starting..')
     this.isRecording = true
     chunks = []
@@ -47,14 +49,6 @@ function Recorder (pilot) {
     this.isRecording = false
     pilot.mixer.recorder.stop()
     pilot.el.className = ''
-  }
-
-  this.toggle = function () {
-    if (this.isRecording !== true) {
-      this.start()
-    } else {
-      this.stop()
-    }
   }
 
   this.save = function (blob) {
